@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApproximationOfTranscendentalNumbers", "ApproximationOfTranscendentalNumbers.csproj", "{24FD7A6F-636E-4F04-B606-C69AA8ED2700}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24FD7A6F-636E-4F04-B606-C69AA8ED2700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24FD7A6F-636E-4F04-B606-C69AA8ED2700}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24FD7A6F-636E-4F04-B606-C69AA8ED2700}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24FD7A6F-636E-4F04-B606-C69AA8ED2700}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4E6F963F-294E-4A7A-9D29-8FDBEE3CE4D2}
+	EndGlobalSection
+EndGlobal
