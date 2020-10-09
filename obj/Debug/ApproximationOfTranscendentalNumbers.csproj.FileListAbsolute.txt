@@ -1,0 +1,11 @@
+C:\Users\warmi\Desktop\ApproximationOfTranscendentalNumbers\bin\Debug\ApproximationOfTranscendentalNumbers.exe.config
+C:\Users\warmi\Desktop\ApproximationOfTranscendentalNumbers\bin\Debug\ApproximationOfTranscendentalNumbers.exe
+C:\Users\warmi\Desktop\ApproximationOfTranscendentalNumbers\bin\Debug\ApproximationOfTranscendentalNumbers.pdb
+C:\Users\warmi\Desktop\ApproximationOfTranscendentalNumbers\obj\Debug\ApproximationOfTranscendentalNumbers.Form1.resources
+C:\Users\warmi\Desktop\ApproximationOfTranscendentalNumbers\obj\Debug\ApproximationOfTranscendentalNumbers.Properties.Resources.resources
+C:\Users\warmi\Desktop\ApproximationOfTranscendentalNumbers\obj\Debug\ApproximationOfTranscendentalNumbers.csproj.GenerateResource.cache
+C:\Users\warmi\Desktop\ApproximationOfTranscendentalNumbers\obj\Debug\ApproximationOfTranscendentalNumbers.csproj.CoreCompileInputs.cache
+C:\Users\warmi\Desktop\ApproximationOfTranscendentalNumbers\obj\Debug\ApproximationOfTranscendentalNumbers.exe
+C:\Users\warmi\Desktop\ApproximationOfTranscendentalNumbers\obj\Debug\ApproximationOfTranscendentalNumbers.pdb
+C:\Users\warmi\Desktop\ApproximationOfTranscendentalNumbers\obj\Debug\ApproximationOfTranscendentalNumbers.MonteCarlo.resources
+C:\Users\warmi\Desktop\ApproximationOfTranscendentalNumbers\obj\Debug\ApproximationOfTranscendentalNumbers.CollidingBlocks.resources

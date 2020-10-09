@@ -16,5 +16,21 @@ namespace ApproximationOfTranscendentalNumbers
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            monteCarlo1.BringToFront();
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            collidingBlocks1.BringToFront();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
