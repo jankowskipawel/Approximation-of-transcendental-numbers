@@ -9,3 +9,4 @@ C:\Users\warmi\Desktop\ApproximationOfTranscendentalNumbers\obj\Debug\Approximat
 C:\Users\warmi\Desktop\ApproximationOfTranscendentalNumbers\obj\Debug\ApproximationOfTranscendentalNumbers.pdb
 C:\Users\warmi\Desktop\ApproximationOfTranscendentalNumbers\obj\Debug\ApproximationOfTranscendentalNumbers.MonteCarlo.resources
 C:\Users\warmi\Desktop\ApproximationOfTranscendentalNumbers\obj\Debug\ApproximationOfTranscendentalNumbers.CollidingBlocks.resources
+C:\Users\warmi\Desktop\ApproximationOfTranscendentalNumbers\obj\Debug\ApproximationOfTranscendentalNumbers.montecarloform.resources
