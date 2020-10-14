@@ -16,5 +16,12 @@ namespace ApproximationOfTranscendentalNumbers
         {
             InitializeComponent();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Form3 third = new Form3();
+            third.ShowDialog();
+
+        }
     }
 }

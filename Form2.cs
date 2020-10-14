@@ -20,10 +20,9 @@ namespace ApproximationOfTranscendentalNumbers
         Pen p;
         Bitmap btm;
         Random rnd = new Random();
-        Thread th;
         int points;
         Rectangle point;
-        Rectangle centerPoint;
+        //Rectangle centerPoint;
         int circlePoints;
         double pi;
         public Form2()

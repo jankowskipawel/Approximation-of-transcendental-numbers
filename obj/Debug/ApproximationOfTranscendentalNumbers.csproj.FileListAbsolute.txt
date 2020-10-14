@@ -12,3 +12,4 @@ C:\Users\warmi\Desktop\ApproximationOfTranscendentalNumbers\obj\Debug\Approximat
 C:\Users\warmi\Desktop\ApproximationOfTranscendentalNumbers\obj\Debug\ApproximationOfTranscendentalNumbers.montecarloform.resources
 C:\Users\warmi\Desktop\ApproximationOfTranscendentalNumbers\obj\Debug\ApproximationOfTranscendentalNumbers.csprojAssemblyReference.cache
 C:\Users\warmi\Desktop\ApproximationOfTranscendentalNumbers\obj\Debug\ApproximationOfTranscendentalNumbers.Form2.resources
+C:\Users\warmi\Desktop\ApproximationOfTranscendentalNumbers\obj\Debug\ApproximationOfTranscendentalNumbers.Form3.resources
