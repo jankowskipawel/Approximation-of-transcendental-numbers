@@ -31,12 +31,12 @@ namespace ApproximationOfTranscendentalNumbers
 
         }
 
-        public void drawRect(Rectangle rect, Rectangle rectSmall)
+        public void drawRect(Rectangle rectLarge, Rectangle rectSmall)
         {
             btm = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             g = Graphics.FromImage(btm);
             p = new Pen(Brushes.Red);
-            g.DrawRectangle(p, rect);
+            g.DrawRectangle(p, rectLarge);
             g.DrawRectangle(p, rectSmall);
 
         }
@@ -45,8 +45,19 @@ namespace ApproximationOfTranscendentalNumbers
             rect.X += vel;
             Rectangle newRect = new Rectangle(rect.X, rect.Y, rect.Width, rect.Height);
             
-            label1.Text = newRect.X.ToString();
+            //label1.Text = newRect.X.ToString();
             return newRect;
+        }
+        public void collide(Rectangle rect, Rectangle rectSmall)
+        {
+            if(rect.X + rect.Width < rectSmall.X || rect.X > rectSmall.X + rectSmall.Width)
+            {
+                label1.Text = "not collide";
+            }
+            else
+            {
+                label1.Text = "collide";
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -62,8 +73,7 @@ namespace ApproximationOfTranscendentalNumbers
         {
             drawRect(large, small);
             large = updatePos(large);
-            
-            
+            collide(large, small);
             pictureBox1.Image = btm;
 
         }
