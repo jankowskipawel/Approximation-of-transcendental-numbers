@@ -19,7 +19,10 @@ namespace ApproximationOfTranscendentalNumbers
         Pen p;
         Rectangle large;
         Rectangle small;
-        int vel = -2;
+        int largeMass = 100;
+        int smallMass = 1;
+        int largeVel = -5;
+        int smallVel = 0;
         
         public Form3()
         {
@@ -40,7 +43,7 @@ namespace ApproximationOfTranscendentalNumbers
             g.DrawRectangle(p, rectSmall);
 
         }
-        public Rectangle updatePos(Rectangle rect)
+        public Rectangle updatePos(Rectangle rect,int vel)
         {
             rect.X += vel;
             Rectangle newRect = new Rectangle(rect.X, rect.Y, rect.Width, rect.Height);
@@ -48,16 +51,26 @@ namespace ApproximationOfTranscendentalNumbers
             //label1.Text = newRect.X.ToString();
             return newRect;
         }
-        public void collide(Rectangle rect, Rectangle rectSmall)
+        public bool isColliding(Rectangle rect, Rectangle rectSmall)
         {
             if(rect.X + rect.Width < rectSmall.X || rect.X > rectSmall.X + rectSmall.Width)
             {
-                label1.Text = "not collide";
+                return false;
             }
             else
             {
-                label1.Text = "collide";
+                return true;
             }
+        }
+        public int bounce(int largeMass,int smallMass, int largeVel, int smallVel)
+        {
+            int sum = largeMass + smallMass;
+            int wynik = (largeMass - smallMass) / sum * largeVel;
+            return wynik;
+        }
+        public int bounceBack(int largeMass,int smallMass, int largeVel, int smallVel)
+        {
+            return(2*largeMass/(largeMass+smallMass))*largeVel+((smallMass-largeMass)/(largeMass+largeMass))*smallVel;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -72,8 +85,15 @@ namespace ApproximationOfTranscendentalNumbers
         private void timer1_Tick(object sender, EventArgs e)
         {
             drawRect(large, small);
-            large = updatePos(large);
-            collide(large, small);
+            if(isColliding(large, small))
+            {
+                
+                largeVel = -1;
+                smallVel = -2;
+
+            }
+            large = updatePos(large,largeVel);
+            small = updatePos(small, smallVel);
             pictureBox1.Image = btm;
 
         }
