@@ -18,50 +18,54 @@ namespace ApproximationOfTranscendentalNumbers
         Bitmap btm;
         Pen p;
         Rectangle large;
-        int largeX = 500;
-        int largeY = 119;
+        Rectangle small;
         int vel = -2;
         
         public Form3()
         {
             large = new Rectangle(500, 119,80,80);
-            
+            small = new Rectangle(100, 179, 20, 20);
             
 
             InitializeComponent();
 
         }
 
-        public void drawRect(Rectangle rect)
+        public void drawRect(Rectangle rect, Rectangle rectSmall)
         {
             btm = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             g = Graphics.FromImage(btm);
             p = new Pen(Brushes.Red);
             g.DrawRectangle(p, rect);
+            g.DrawRectangle(p, rectSmall);
 
         }
         public Rectangle updatePos(Rectangle rect)
         {
             rect.X += vel;
             Rectangle newRect = new Rectangle(rect.X, rect.Y, rect.Width, rect.Height);
-            drawRect(newRect);
-            pictureBox1.Image = btm;
+            
             label1.Text = newRect.X.ToString();
             return newRect;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            drawRect(large);
-            pictureBox1.Image = btm;
+            drawRect(large,small);
+            
+            
             
             timer1.Start();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
+            drawRect(large, small);
             large = updatePos(large);
+            
+            
+            pictureBox1.Image = btm;
+
         }
 
 
