@@ -17,24 +17,53 @@ namespace ApproximationOfTranscendentalNumbers
         Graphics g;
         Bitmap btm;
         Pen p;
-        Rectangle large;
-        Rectangle small;
-        int largeMass = 100;
-        int smallMass = 1;
-        int largeVel = -5;
-        int smallVel = 0;
-        
+        Rectangle largeRect;
+        Rectangle smallRect;
+        Kwadrat small;
+        Kwadrat large;
+       
+        public struct Kwadrat
+        {
+            public Rectangle rect;
+            public double mass;
+            public double velocity;
+            public Kwadrat(Rectangle rect, double mass, double velocity)
+            {
+                this.rect = rect;
+                this.mass = mass;
+                this.velocity = velocity;
+            }
+            public void updatePos()
+            {
+                rect.X += (int)velocity;
+            }
+            public bool collide(Kwadrat other)
+            {
+                if (rect.X + rect.Width < other.rect.X || rect.X > other.rect.X + other.rect.Width)
+                {
+
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+
+        }
+
+
         public Form3()
         {
-            large = new Rectangle(500, 119,80,80);
-            small = new Rectangle(100, 179, 20, 20);
             
+            small = new Kwadrat(new Rectangle(100, 179, 20, 20), 1, 0);
+            large = new Kwadrat(new Rectangle(500, 119, 80, 80), 100, -10);
 
             InitializeComponent();
 
         }
 
-        public void drawRect(Rectangle rectLarge, Rectangle rectSmall)
+        /*public void DrawRect(Rectangle rectLarge, Rectangle rectSmall)
         {
             btm = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             g = Graphics.FromImage(btm);
@@ -42,18 +71,29 @@ namespace ApproximationOfTranscendentalNumbers
             g.DrawRectangle(p, rectLarge);
             g.DrawRectangle(p, rectSmall);
 
-        }
-        public Rectangle updatePos(Rectangle rect,int vel)
+        }*/
+        public void DrawKwadrat(Kwadrat small,Kwadrat large)
         {
-            rect.X += vel;
+            btm = new Bitmap(pictureBox1.Width, pictureBox1.Height);
+            g = Graphics.FromImage(btm);
+            p = new Pen(Brushes.Red);
+            g.DrawRectangle(p, small.rect);
+            g.DrawRectangle(p, large.rect);
+            pictureBox1.Image = btm;
+
+        }
+        
+        /*public Rectangle updatePos(Rectangle rect, double vel)
+        {
+            rect.X += (int)vel;
             Rectangle newRect = new Rectangle(rect.X, rect.Y, rect.Width, rect.Height);
-            
+
             //label1.Text = newRect.X.ToString();
             return newRect;
-        }
-        public bool isColliding(Rectangle rect, Rectangle rectSmall)
+        }*/
+        /*public bool isColliding(Rectangle rect, Rectangle rectSmall)
         {
-            if(rect.X + rect.Width < rectSmall.X || rect.X > rectSmall.X + rectSmall.Width)
+            if (rect.X + rect.Width < rectSmall.X || rect.X > rectSmall.X + rectSmall.Width)
             {
                 return false;
             }
@@ -61,40 +101,41 @@ namespace ApproximationOfTranscendentalNumbers
             {
                 return true;
             }
-        }
-        public int bounce(int largeMass,int smallMass, int largeVel, int smallVel)
-        {
-            int sum = largeMass + smallMass;
-            int wynik = (largeMass - smallMass) / sum * largeVel;
-            return wynik;
-        }
-        public int bounceBack(int largeMass,int smallMass, int largeVel, int smallVel)
-        {
-            return(2*largeMass/(largeMass+smallMass))*largeVel+((smallMass-largeMass)/(largeMass+largeMass))*smallVel;
-        }
+        }*/
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
-            drawRect(large,small);
+            DrawKwadrat(small, large);
             
-            
-            
+
+
             timer1.Start();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            drawRect(large, small);
-            if(isColliding(large, small))
+            DrawKwadrat(small, large);
+
+            large.updatePos();
+            label1.Text = small.rect.X.ToString();
+
+            /*Kwadrat duzy = new Kwadrat(large, 100, 5);
+            Kwadrat maly = new Kwadrat(small, 1, 0);
+            DrawKwadrat(duzy, maly);
+            if (duzy.collide(maly))
             {
-                
-                largeVel = -1;
-                smallVel = -2;
+                label2.Text = "collide";
 
             }
-            large = updatePos(large,largeVel);
+            else
+            {
+                label2.Text = " not collide ";
+            }
+            large = updatePos(large, largeVel);
             small = updatePos(small, smallVel);
-            pictureBox1.Image = btm;
+            pictureBox1.Image = btm;*/
 
         }
 
