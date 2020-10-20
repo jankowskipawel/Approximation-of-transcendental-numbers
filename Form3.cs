@@ -17,8 +17,6 @@ namespace ApproximationOfTranscendentalNumbers
         Graphics g;
         Bitmap btm;
         Pen p;
-        Rectangle largeRect;
-        Rectangle smallRect;
         Kwadrat small;
         Kwadrat large;
        
@@ -49,6 +47,12 @@ namespace ApproximationOfTranscendentalNumbers
                     return true;
                 }
             }
+            public double EllasticCollision (Kwadrat other)
+            {
+                double sum = mass + other.mass;
+                double newV = (mass - other.mass) / sum * velocity + (2 * other.mass / sum) * other.velocity;
+                return newV;
+            }
 
         }
 
@@ -56,8 +60,8 @@ namespace ApproximationOfTranscendentalNumbers
         public Form3()
         {
             
-            small = new Kwadrat(new Rectangle(100, 179, 20, 20), 1, 0);
-            large = new Kwadrat(new Rectangle(500, 119, 80, 80), 100, -10);
+            small = new Kwadrat(new Rectangle(300, 179, 20, 20), 1, 0);
+            large = new Kwadrat(new Rectangle(500, 119, 80, 80), 100, -5);
 
             InitializeComponent();
 
@@ -118,8 +122,19 @@ namespace ApproximationOfTranscendentalNumbers
         {
             DrawKwadrat(small, large);
 
+            small.updatePos();
             large.updatePos();
-            label1.Text = small.rect.X.ToString();
+            if(small.collide(large))
+            {
+                double v1 = small.EllasticCollision(large);
+                double v2 = large.EllasticCollision(small);
+                small.velocity = v1;
+                large.velocity = v2;
+            }
+            label1.Text = small.velocity.ToString();
+            label2.Text = large.velocity.ToString();
+            
+            
 
             /*Kwadrat duzy = new Kwadrat(large, 100, 5);
             Kwadrat maly = new Kwadrat(small, 1, 0);
