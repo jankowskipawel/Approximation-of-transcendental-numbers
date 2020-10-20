@@ -31,11 +31,11 @@ namespace ApproximationOfTranscendentalNumbers
                 this.mass = mass;
                 this.velocity = velocity;
             }
-            public void updatePos()
+            public void UpdatePos()
             {
                 rect.X += (int)velocity;
             }
-            public bool collide(Kwadrat other)
+            public bool Collide(Kwadrat other)
             {
                 if (rect.X + rect.Width < other.rect.X || rect.X > other.rect.X + other.rect.Width)
                 {
@@ -45,6 +45,13 @@ namespace ApproximationOfTranscendentalNumbers
                 else
                 {
                     return true;
+                }
+            }
+            public void Wall()
+            {
+                if(rect.X <= 0 )
+                {
+                    velocity *= -1;
                 }
             }
             public double EllasticCollision (Kwadrat other)
@@ -120,19 +127,23 @@ namespace ApproximationOfTranscendentalNumbers
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            DrawKwadrat(small, large);
+            
 
-            small.updatePos();
-            large.updatePos();
-            if(small.collide(large))
+            
+            if(small.Collide(large))
             {
                 double v1 = small.EllasticCollision(large);
                 double v2 = large.EllasticCollision(small);
                 small.velocity = v1;
                 large.velocity = v2;
             }
+            small.Wall();
+            small.UpdatePos();
+            large.UpdatePos();
+            DrawKwadrat(small, large);
             label1.Text = small.velocity.ToString();
             label2.Text = large.velocity.ToString();
+            label3.Text = small.rect.X.ToString();
             
             
 
