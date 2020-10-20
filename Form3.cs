@@ -19,6 +19,8 @@ namespace ApproximationOfTranscendentalNumbers
         Pen p;
         Kwadrat small;
         Kwadrat large;
+        int counter = 0;
+        double timesteps = 10;
        
         public struct Kwadrat
         {
@@ -47,12 +49,20 @@ namespace ApproximationOfTranscendentalNumbers
                     return true;
                 }
             }
-            public void Wall()
+            public bool Wall()
             {
                 if(rect.X <= 0 )
                 {
-                    velocity *= -1;
+                    return true;
                 }
+                else
+                {
+                    return false;
+                }
+            }
+            public void reverse()
+            {
+                velocity *= -1;
             }
             public double EllasticCollision (Kwadrat other)
             {
@@ -68,7 +78,7 @@ namespace ApproximationOfTranscendentalNumbers
         {
             
             small = new Kwadrat(new Rectangle(300, 179, 20, 20), 1, 0);
-            large = new Kwadrat(new Rectangle(500, 119, 80, 80), 100, -5);
+            large = new Kwadrat(new Rectangle(500, 119, 80, 80), 10000, -2);
 
             InitializeComponent();
 
@@ -83,11 +93,12 @@ namespace ApproximationOfTranscendentalNumbers
             g.DrawRectangle(p, rectSmall);
 
         }*/
-        public void DrawKwadrat(Kwadrat small,Kwadrat large)
+        public void DrawKwadrat(Kwadrat small,Kwadrat large )
         {
             btm = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             g = Graphics.FromImage(btm);
             p = new Pen(Brushes.Red);
+            
             g.DrawRectangle(p, small.rect);
             g.DrawRectangle(p, large.rect);
             pictureBox1.Image = btm;
@@ -118,7 +129,7 @@ namespace ApproximationOfTranscendentalNumbers
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DrawKwadrat(small, large);
+            
             
 
 
@@ -128,7 +139,6 @@ namespace ApproximationOfTranscendentalNumbers
         private void timer1_Tick(object sender, EventArgs e)
         {
             
-
             
             if(small.Collide(large))
             {
@@ -136,14 +146,21 @@ namespace ApproximationOfTranscendentalNumbers
                 double v2 = large.EllasticCollision(small);
                 small.velocity = v1;
                 large.velocity = v2;
+                counter++;
             }
-            small.Wall();
+            if(small.Wall())
+            {
+                small.reverse();
+                counter++;
+            }
+            
             small.UpdatePos();
             large.UpdatePos();
+           
             DrawKwadrat(small, large);
-            label1.Text = small.velocity.ToString();
+            label1.Text = counter.ToString();
             label2.Text = large.velocity.ToString();
-            label3.Text = small.rect.X.ToString();
+            
             
             
 
