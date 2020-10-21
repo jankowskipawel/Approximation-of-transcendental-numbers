@@ -16,42 +16,49 @@ namespace ApproximationOfTranscendentalNumbers
     {
         Graphics g;
         Bitmap btm;
-        Pen p;
-        Kwadrat small;
-        Kwadrat large;
         int counter = 0;
-        double timesteps = 10;
+        float timesteps = 100;
+        Block small;
+        Block large;
+        
        
-        public struct Kwadrat
+        public struct Block
         {
-            public Rectangle rect;
-            public double mass;
-            public double velocity;
-            public Kwadrat(Rectangle rect, double mass, double velocity)
+            public float x;
+            public float width;
+            public float mass;
+            public float velocity;
+            public Block(float x,float width, float mass, float velocity)
             {
-                this.rect = rect;
+                this.x = x;
+                this.width = width;
                 this.mass = mass;
                 this.velocity = velocity;
             }
             public void UpdatePos()
             {
-                rect.X += (int)velocity;
+                x += velocity;
             }
-            public bool Collide(Kwadrat other)
+            public bool IsColliding(Block other)
             {
-                if (rect.X + rect.Width < other.rect.X || rect.X > other.rect.X + other.rect.Width)
+                if(x + width < other.x || x > other.x + other.width)
                 {
-
                     return false;
                 }
                 else
                 {
                     return true;
                 }
+            }
+            public float ElasticCollision(Block other)
+            {
+                float sum = mass + other.mass;
+                float newVelocity = (mass - other.mass) / sum * velocity + (2 * other.mass / sum) * other.velocity;
+                return newVelocity;
             }
             public bool Wall()
             {
-                if(rect.X <= 0 )
+                if (x <= 0)
                 {
                     return true;
                 }
@@ -60,129 +67,72 @@ namespace ApproximationOfTranscendentalNumbers
                     return false;
                 }
             }
-            public void reverse()
-            {
-                velocity *= -1;
-            }
-            public double EllasticCollision (Kwadrat other)
-            {
-                double sum = mass + other.mass;
-                double newV = (mass - other.mass) / sum * velocity + (2 * other.mass / sum) * other.velocity;
-                return newV;
-            }
-
         }
 
 
         public Form3()
         {
-            
-            small = new Kwadrat(new Rectangle(300, 179, 20, 20), 1, 0);
-            large = new Kwadrat(new Rectangle(500, 119, 80, 80), 10000, -2);
-
+            small = new Block(100, 20, 1, 0);
+            large = new Block(300, 80, 100000000, -1/timesteps);
             InitializeComponent();
-
         }
-
-        /*public void DrawRect(Rectangle rectLarge, Rectangle rectSmall)
+        public void DrawBlocks(Block small, Block large)
         {
+            RectangleF block1 = new RectangleF(large.x, 119, large.width, large.width);
+            RectangleF block2 = new RectangleF(small.x, 179, small.width, small.width);
             btm = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             g = Graphics.FromImage(btm);
-            p = new Pen(Brushes.Red);
-            g.DrawRectangle(p, rectLarge);
-            g.DrawRectangle(p, rectSmall);
-
-        }*/
-        public void DrawKwadrat(Kwadrat small,Kwadrat large )
-        {
-            btm = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            g = Graphics.FromImage(btm);
-            p = new Pen(Brushes.Red);
-            
-            g.DrawRectangle(p, small.rect);
-            g.DrawRectangle(p, large.rect);
+            SolidBrush b = new SolidBrush(Color.Red);
+            g.FillRectangle(b, block1);
+            g.FillRectangle(b, block2);
             pictureBox1.Image = btm;
-
+            
         }
-        
-        /*public Rectangle updatePos(Rectangle rect, double vel)
-        {
-            rect.X += (int)vel;
-            Rectangle newRect = new Rectangle(rect.X, rect.Y, rect.Width, rect.Height);
 
-            //label1.Text = newRect.X.ToString();
-            return newRect;
-        }*/
-        /*public bool isColliding(Rectangle rect, Rectangle rectSmall)
-        {
-            if (rect.X + rect.Width < rectSmall.X || rect.X > rectSmall.X + rectSmall.Width)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }*/
+        
+        
+        
+        
 
 
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            
-
-
             timer1.Start();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
-            
-            if(small.Collide(large))
-            {
-                double v1 = small.EllasticCollision(large);
-                double v2 = large.EllasticCollision(small);
-                small.velocity = v1;
-                large.velocity = v2;
-                counter++;
-            }
-            if(small.Wall())
-            {
-                small.reverse();
-                counter++;
-            }
-            
-            small.UpdatePos();
-            large.UpdatePos();
-           
-            DrawKwadrat(small, large);
             label1.Text = counter.ToString();
-            label2.Text = large.velocity.ToString();
             
-            
-            
-
-            /*Kwadrat duzy = new Kwadrat(large, 100, 5);
-            Kwadrat maly = new Kwadrat(small, 1, 0);
-            DrawKwadrat(duzy, maly);
-            if (duzy.collide(maly))
+            for(int i = 0; i < timesteps; i++)
             {
-                label2.Text = "collide";
+                if(small.IsColliding(large))
+                {
+                    float v1 = small.ElasticCollision(large);
+                    float v2 = large.ElasticCollision(small);
+                    small.velocity = v1;
+                    large.velocity = v2;
+                    counter++;
+                }
+                if(small.Wall())
+                {
+                    small.velocity *= -1;
+                    counter++;
+                }
+            
+                small.UpdatePos();
+                large.UpdatePos();
 
             }
-            else
-            {
-                label2.Text = " not collide ";
-            }
-            large = updatePos(large, largeVel);
-            small = updatePos(small, smallVel);
-            pictureBox1.Image = btm;*/
+            DrawBlocks(small, large);
+
+
+
+
 
         }
 
-
-
+       
     }
 }
