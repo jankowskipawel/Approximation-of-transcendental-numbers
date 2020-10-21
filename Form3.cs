@@ -98,9 +98,10 @@ namespace ApproximationOfTranscendentalNumbers
             RectangleF block2 = new RectangleF((float)small.x, 179, (float)small.width, (float)small.width);
             btm = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             g = Graphics.FromImage(btm);
-            SolidBrush b = new SolidBrush(Color.Red);
-            g.FillRectangle(b, block1);
-            g.FillRectangle(b, block2);
+            SolidBrush Red = new SolidBrush(Color.Red);
+            SolidBrush Yellow = new SolidBrush(Color.Yellow);
+            g.FillRectangle(Red, block1);
+            g.FillRectangle(Yellow, block2);
             pictureBox1.Image = btm;
             
         }
