@@ -1,6 +1,6 @@
 ﻿namespace ApproximationOfTranscendentalNumbers
 {
-    partial class MonteCarlo
+    partial class Szeregi
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,35 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MonteCarlo));
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Impact", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.label1.Location = new System.Drawing.Point(26, 12);
+            this.label1.Location = new System.Drawing.Point(216, 92);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(437, 60);
+            this.label1.Size = new System.Drawing.Size(42, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Metoda Monte Carlo";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.Font = new System.Drawing.Font("Century", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(36, 72);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(628, 298);
-            this.label2.TabIndex = 1;
-            this.label2.Text = resources.GetString("label2.Text");
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Text = "Szeregi";
             // 
             // button4
             // 
@@ -67,36 +50,24 @@
             this.button4.Font = new System.Drawing.Font("Century Gothic", 13F);
             this.button4.ForeColor = System.Drawing.Color.White;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(350, 373);
+            this.button4.Location = new System.Drawing.Point(160, 223);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(174, 69);
-            this.button4.TabIndex = 5;
+            this.button4.TabIndex = 7;
             this.button4.Text = "Zobacz animację";
             this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(692, 190);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(40, 33);
-            this.button1.TabIndex = 6;
-            this.button1.Text = ">";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // MonteCarlo
+            // Szeregi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "MonteCarlo";
-            this.Size = new System.Drawing.Size(861, 445);
+            this.Name = "Szeregi";
+            this.Size = new System.Drawing.Size(507, 328);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -105,8 +76,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button1;
     }
 }

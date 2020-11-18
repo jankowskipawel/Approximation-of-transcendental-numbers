@@ -34,14 +34,17 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.collidingBlocks1 = new ApproximationOfTranscendentalNumbers.CollidingBlocks();
             this.monteCarlo1 = new ApproximationOfTranscendentalNumbers.MonteCarlo();
+            this.szeregi1 = new ApproximationOfTranscendentalNumbers.Szeregi();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -115,6 +118,25 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // button4
+            // 
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
+            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button4.Location = new System.Drawing.Point(0, 298);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(150, 69);
+            this.button4.TabIndex = 4;
+            this.button4.Text = "Szeregi";
+            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // collidingBlocks1
             // 
             this.collidingBlocks1.Location = new System.Drawing.Point(156, 81);
@@ -129,11 +151,19 @@
             this.monteCarlo1.Size = new System.Drawing.Size(854, 522);
             this.monteCarlo1.TabIndex = 4;
             // 
+            // szeregi1
+            // 
+            this.szeregi1.Location = new System.Drawing.Point(150, 64);
+            this.szeregi1.Name = "szeregi1";
+            this.szeregi1.Size = new System.Drawing.Size(860, 551);
+            this.szeregi1.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1022, 615);
+            this.Controls.Add(this.szeregi1);
             this.Controls.Add(this.collidingBlocks1);
             this.Controls.Add(this.monteCarlo1);
             this.Controls.Add(this.button3);
@@ -157,6 +187,8 @@
         private System.Windows.Forms.Button button3;
         private MonteCarlo monteCarlo1;
         private CollidingBlocks collidingBlocks1;
+        private System.Windows.Forms.Button button4;
+        private Szeregi szeregi1;
     }
 }
 

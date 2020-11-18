@@ -15,6 +15,7 @@ namespace ApproximationOfTranscendentalNumbers
         public Form1()
         {
             InitializeComponent();
+            collidingBlocks1.BringToFront();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -31,6 +32,11 @@ namespace ApproximationOfTranscendentalNumbers
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            szeregi1.BringToFront();
         }
     }
 }

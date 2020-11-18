@@ -10,25 +10,17 @@ using System.Windows.Forms;
 
 namespace ApproximationOfTranscendentalNumbers
 {
-    public partial class MonteCarlo : UserControl
+    public partial class Szeregi : UserControl
     {
-        public MonteCarlo()
+        public Szeregi()
         {
             InitializeComponent();
-            
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Form2 second = new Form2();
-            
-            second.ShowDialog();
-            
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
+            Form4 fourth = new Form4();
+            fourth.ShowDialog();
         }
     }
 }
